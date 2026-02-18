@@ -14,9 +14,8 @@ user_template = """
     Instructions:
     1. Carefully read the conversation below between the user and the assistant.
     2. Examine each proposed completion. Each completion should appropriately address the user's question in one or more of these domains:
-      - Software Engineering: correctness, clarity, and practicality of code or technical explanation.
-      - Mathematics: accuracy of problem solving, logical reasoning, and correctness of final answers.
-      - Creative Writing: originality, coherence, style, and how well it matches the user's creative prompt.
+      - Coding: correctness, clarity, and practicality of code or technical explanation.
+      - STEM: accuracy of problem solving, logical reasoning, and correctness of final answers.
     3. Assess each completion on how well it satisfies the user's request in the relevant domain(s).
     4. Consider the instructions provided in the system message, and whether the completion aligns with them.
     5. The solution should be correct, clear, well-structured, and concise if possible, and does **NOT** contain any text unrelated to the problem-solving.
