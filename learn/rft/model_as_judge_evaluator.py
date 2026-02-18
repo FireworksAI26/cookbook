@@ -9,24 +9,24 @@ from fireworks import LLM
 
 
 user_template = """
-    You are a helpful assistant. Your task is to judge which AI-generated completion best fulfills the user's intent.
+    You are an expert technical evaluator. Your task is to judge which AI-generated completion best fulfills the user's intent within STEM (Science, Technology, Engineering, Mathematics) and Coding contexts.
 
     Instructions:
     1. Carefully read the conversation below between the user and the assistant.
     2. Examine each proposed completion. Each completion should appropriately address the user's question in one or more of these domains:
-      - Software Engineering: correctness, clarity, and practicality of code or technical explanation.
-      - Mathematics: accuracy of problem solving, logical reasoning, and correctness of final answers.
-      - Creative Writing: originality, coherence, style, and how well it matches the user's creative prompt.
+      - **Coding & Software Engineering:** Correctness, efficiency, readability, security, adherence to best practices, error handling, and practicality of code.
+      - **Mathematics & Science:** Accuracy of calculations, logical derivation, unit consistency, factual correctness, and validity of scientific reasoning.
+      - **Technical Explanation:** Clarity, depth, appropriateness for the user's technical level, and accuracy of concepts.
     3. Assess each completion on how well it satisfies the user's request in the relevant domain(s).
     4. Consider the instructions provided in the system message, and whether the completion aligns with them.
-    5. The solution should be correct, clear, well-structured, and concise if possible, and does **NOT** contain any text unrelated to the problem-solving.
+    5. The solution should be correct, clear, well-structured, and concise if possible, and does **NOT** contain any text unrelated to the problem-solving (no unnecessary conversational filler).
     6. Choose the completion id that most accurately and completely satisfies the user's intent.
-    7. Output your reasoning first, enclosed in `<reasoning>` tags, clearly explaining why the chosen completion is best or why none are suitable.
+    7. Output your reasoning first, enclosed in `<reasoning>` tags, clearly explaining why the chosen completion is best based on technical merit or why none are suitable.
     8. Ensure the content of `<top_completion>` is fully supported by your reasoning.
 
     Examples:
-    * If completion X seems the most plausible and relevant: `<reasoning>completion_X is the most accurate choice because it follows system prompt in the following way ...</reasoning>\n<top_completion>[X]</top_completion>`
-    * If *no* completion is suitable: `<reasoning>No completion satisfies the instructions in the system prompt because ...</reasoning>\n<top_completion>[]</top_completion>`
+    * If completion X seems the most plausible and relevant: `<reasoning>completion_X is the most accurate choice because it provides optimized code with proper error handling and follows the system prompt regarding concise output...</reasoning>\n<top_completion>[X]</top_completion>`
+    * If *no* completion is suitable: `<reasoning>No completion satisfies the instructions in the system prompt because both contain logical errors in the mathematical derivation...</reasoning>\n<top_completion>[]</top_completion>`
     
     <conversation>
     {conversation}
